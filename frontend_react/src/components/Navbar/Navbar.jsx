@@ -30,12 +30,15 @@ const Navbar = () => {
                     <motion.div whileInView={{ x: [300, 0] }}
                         transition={{ duration: 0.85, ease: 'easeOut' }}
                     >
+                        {/* svg is inside the <HiX/> */}
                         <HiX onClick={() => setToggle(false)} />
-                        {['home', 'about', 'contact', 'work', 'skills', 'contact'].map((item) => (
-                            <li key={item}>
-                                <a href={`#${item}`} onClick={() => setToggle(false)}>{item}</a>
-                            </li>
-                        ))}
+                        <ul>
+                            {['home', 'about', 'contact', 'work', 'skills', 'contact'].map((item) => (
+                                <li key={item}>
+                                    <a href={`#${item}`} onClick={() => setToggle(false)}>{item}</a>
+                                </li>
+                            ))}
+                        </ul>
                     </motion.div>
                 )}
             </div>
