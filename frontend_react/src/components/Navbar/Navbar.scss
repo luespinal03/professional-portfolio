@@ -1,0 +1,82 @@
+.app__navbar {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  //   not available on every browser so we webkit it
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: fixed;
+  z-index: 2;
+}
+
+.app__navbar-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  img {
+    width: 90px;
+    height: 20px;
+    // for extra large devices
+    @media screen and (min-width: 2000px) {
+      width: 180px;
+      height: 40px;
+    }
+  }
+}
+
+.app__navbar-links {
+  // makes the div take out the rest of the space that logo doesnt take
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  list-style: none;
+
+  li {
+    margin: 0 1rem;
+    // cursor: pointer lets the user know the content is clickable once they hover over it with the mouse
+    cursor: pointer;
+
+    flex-direction: column;
+
+    // empty div with closing tag. this is is creating the dot that hovers over the items in navbar user hovers on
+    div {
+      width: 5px;
+      height: 5px;
+      background: transparent;
+      broder-radius: 50%;
+    }
+
+    a {
+      // using scss variables created inside index.css file
+      //   great for theme colors that will be used across the entire application
+      color: var(--gray-color);
+      text-decoration: none;
+      flex-direction: column;
+
+      text-transform: uppercase;
+      font-weight: 500;
+
+      transition: all 0.3s ease-in-out;
+
+      //   the & symbol below indicates we are referring to the element we are currently inside of aka the a tag
+      &:hover {
+        color: var(--secondary-color);
+      }
+    }
+
+    &:hover {
+      div {
+        background-color: var(--secondary-color);
+      }
+    }
+  }
+}
