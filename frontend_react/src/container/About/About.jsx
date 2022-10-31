@@ -14,12 +14,12 @@ const abouts = [
         description: 'I am a good front end developer.',
         imgUrl: images.about02
     }, {
-        title: 'Back End',
-        description: 'I am a good back end developer.',
-        imgUrl: images.about03
+        title: 'Git',
+        description: 'I am a good with Git.',
+        imgUrl: images.git
     }, {
-        title: 'Web 3',
-        description: 'I am a good web 3 developer.',
+        title: 'Solidity',
+        description: 'I am a good at building smart contracts for the Web3.',
         imgUrl: images.about04
     }
 ]
@@ -27,7 +27,7 @@ const abouts = [
 const About = () => {
     return (
         <>
-            <h2 className="head-text">I Know That <span>Good Design</span>
+            <h2 className="head-text">I Know That <span>Good Development</span>
                 <br /> Means <span>Good Business</span></h2>
 
             <div className="app__profiles">
