@@ -2,29 +2,40 @@ import React, { useState, useEffect } from 'react';
 import './About.scss';
 import { motion } from 'framer-motion';
 import { images } from '../../constants'
+import { urlFor, client } from '../../client';
 
 
-const abouts = [
-    {
-        title: 'Web Development',
-        description: 'I am a good web developer.',
-        imgUrl: images.about01
-    }, {
-        title: 'Front End',
-        description: 'I am a good front end developer.',
-        imgUrl: images.about02
-    }, {
-        title: 'Git',
-        description: 'I am a good with Git.',
-        imgUrl: images.git
-    }, {
-        title: 'Solidity',
-        description: 'I am a good at building smart contracts for the Web3.',
-        imgUrl: images.about04
-    }
-]
+// const abouts = [
+//     {
+//         title: 'Web Development',
+//         description: 'I am a good web developer.',
+//         imgUrl: images.about01
+//     }, {
+//         title: 'Front End',
+//         description: 'I am a good front end developer.',
+//         imgUrl: images.about02
+//     }, {
+//         title: 'Git',
+//         description: 'I am a good with Git.',
+//         imgUrl: images.git
+//     }, {
+//         title: 'Solidity',
+//         description: 'I am a good at building smart contracts for the Web3.',
+//         imgUrl: images.about04
+//     }
+// ]
 
 const About = () => {
+    const [abouts, setAbouts] = useState([])
+
+
+    useEffect(() => {
+        const query = '*[_type == "abouts"]';
+
+        client.fetch(query)
+            .then((data) => setAbouts(data));
+    }, []);
+
     return (
         <>
             <h2 className="head-text">I Know That <span>Good Development</span>
