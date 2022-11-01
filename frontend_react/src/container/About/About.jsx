@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './About.scss';
 import { motion } from 'framer-motion';
-import { images } from '../../constants'
+import { AppWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 
 
@@ -50,7 +50,8 @@ const About = () => {
                         className='app__profile-item'
                         key={about.title + index}
                     >
-                        <img src={about.imgUrl} alt={about.title} />
+                        {/* this image comes from the image that gets input through sanity */}
+                        <img src={urlFor(about.imgUrl)} alt={about.title} />
                         <h2 className='bold-text' style={{ marginTop: 20 }}>{about.title}</h2>
                         <p className='p-text' style={{ marginTop: 10 }}>{about.description}</p>
                     </motion.div>
@@ -60,4 +61,4 @@ const About = () => {
     )
 }
 
-export default About
+export default AppWrap(About, 'about');

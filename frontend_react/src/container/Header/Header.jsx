@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { AppWrap } from '../../wrapper'
 import { images } from '../../constants'
 import './Header.scss'
 
@@ -16,7 +17,7 @@ const scaleVariants = {
 
 const Header = () => {
     return (
-        <div id='home' className='app__header app__flex'>
+        <div className='app__header app__flex'>
             <motion.div
                 // animation comes from the left on the x axis. This is because of the -100. A negative number indicats it comes from the left and stops at 0 which means it stops right at the center, right in the middle. Opacity goes from 0 to 1 in 0.5 seconds as specified in the duration.
                 whileInView={{ x: [-100, 0], opacity: [0, 1] }}
@@ -70,4 +71,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default AppWrap(Header, 'home')
