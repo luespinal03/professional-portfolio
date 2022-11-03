@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { NavigationDots, SocialMedia, } from '../components'
 
 const AppWrap = (Component, idName, className) => function HOC() {
