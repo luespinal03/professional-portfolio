@@ -1,27 +1,25 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { motion } from 'framer-motion';
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
-import './Testimonial.scss'
+import './Testimonial.scss';
 
 const Testimonial = () => {
-    const [brands, setBrands] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [testimonials, setTestimonials] = useState([]);
-    const [currentIndex, setcurrentIndex] = useState(0);
+    const [brands, setBrands] = useState([]);
 
     const handleClick = (index) => {
-        setcurrentIndex(index);
-    }
+        setCurrentIndex(index);
+    };
 
     useEffect(() => {
         const query = '*[_type == "testimonials"]';
         const brandsQuery = '*[_type == "brands"]';
 
         client.fetch(query).then((data) => {
-
-
             setTestimonials(data);
         });
 
@@ -30,24 +28,20 @@ const Testimonial = () => {
         });
     }, []);
 
-    const test = testimonials[currentIndex];
-
     return (
         <>
-            {/* if there is a testimonials.length then execute code below */}
             {testimonials.length && (
                 <>
                     <div className="app__testimonial-item app__flex">
-                        <img src={urlFor(test.imgurl)} alt="testimonial" />
+                        <img src={urlFor(testimonials[currentIndex].imgurl)} alt={testimonials[currentIndex].name} />
                         <div className="app__testimonial-content">
-                            <p className='p-text'>{test.feedback}</p>
+                            <p className="p-text">{testimonials[currentIndex].feedback}</p>
                             <div>
-                                <h4 className='bold-text'>{test.name}</h4>
-                                <h5 className='p-text'>{test.company}</h5>
+                                <h4 className="bold-text">{testimonials[currentIndex].name}</h4>
+                                <h5 className="p-text">{testimonials[currentIndex].company}</h5>
                             </div>
                         </div>
                     </div>
-
 
                     <div className="app__testimonial-btns app__flex">
                         <div className="app__flex" onClick={() => handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}>
@@ -61,9 +55,7 @@ const Testimonial = () => {
                 </>
             )}
 
-
-
-            <div className='app__testimonial-brands app__flex'>
+            <div className="app__testimonial-brands app__flex">
                 {brands.map((brand) => (
                     <motion.div
                         whileInView={{ opacity: [0, 1] }}
@@ -71,16 +63,15 @@ const Testimonial = () => {
                         key={brand._id}
                     >
                         <img src={urlFor(brand.imgUrl)} alt={brand.name} />
-
                     </motion.div>
                 ))}
             </div>
         </>
-    )
-}
+    );
+};
 
 export default AppWrap(
     MotionWrap(Testimonial, 'app__testimonial'),
-    'app--testimonial',
+    'testimonial',
     'app__primarybg',
 );
