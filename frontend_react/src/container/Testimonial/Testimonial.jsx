@@ -47,18 +47,21 @@ const Testimonial = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='app__testimonial-btns app__flex'>
-                        {/* if we are curently at the first index then we want to go to the last index else current index + 1 */}
-                        <div className='app__flex' onClick={() => handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}></div>
-                        <HiChevronLeft />
-                    </div>
-                    <div className='app__testimonial-btns app__flex'>
-                        {/* if we are curently at the last index then we want to go to the first else current index + 1 */}
-                        <div className='app__flex' onClick={() => handleClick(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)}></div>
-                        <HiChevronLeft />
+
+
+                    <div className="app__testimonial-btns app__flex">
+                        <div className="app__flex" onClick={() => handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}>
+                            <HiChevronLeft />
+                        </div>
+
+                        <div className="app__flex" onClick={() => handleClick(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)}>
+                            <HiChevronRight />
+                        </div>
                     </div>
                 </>
             )}
+
+
 
             <div className='app__testimonial-brands app__flex'>
                 {brands.map((brand) => (
